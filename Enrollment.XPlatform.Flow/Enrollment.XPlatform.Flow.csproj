@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+		<LangVersion>latest</LangVersion>
+		<Nullable>enable</Nullable>
+		<WarningsAsErrors>true</WarningsAsErrors>
+  </PropertyGroup>
+
+  <ItemGroup>
+		<PackageReference Include="LogicBuilder.App.Maui.AutoMapperProfiles" Version="1.0.2" />
+		<PackageReference Include="LogicBuilder.App.Maui.Utils" Version="1.0.1" />
+		<PackageReference Include="LogicBuilder.App.Utils" Version="1.0.9" />
+		<PackageReference Include="LogicBuilder.RulesDirector" Version="2.0.6" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="10.0.14" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Enrollment.Data\Enrollment.Data.csproj" />
+    <ProjectReference Include="..\Enrollment.Domain\Enrollment.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+
+</Project>

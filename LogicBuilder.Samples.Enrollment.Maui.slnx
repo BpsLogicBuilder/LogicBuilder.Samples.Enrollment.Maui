@@ -1,0 +1,13 @@
+<Solution>
+  <Folder Name="/App/">
+    <Project Path="Enrollment.XPlatform.Flow/Enrollment.XPlatform.Flow.csproj" />
+    <Project Path="Enrollment.XPlatform.Maui/Enrollment.XPlatform.Maui.csproj" />
+  </Folder>
+  <Folder Name="/Business/">
+    <Project Path="Enrollment.Domain/Enrollment.Domain.csproj" />
+  </Folder>
+  <Folder Name="/EF/">
+    <Project Path="Enrollment.Data/Enrollment.Data.csproj" />
+  </Folder>
+  <Folder Name="/_Solution Items/" />
+</Solution>
