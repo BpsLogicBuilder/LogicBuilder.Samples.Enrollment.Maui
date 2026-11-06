@@ -58,10 +58,18 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="appsettings.json" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Include="appsettings.json" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="Akavache.Sqlite3" Version="13.0.0" />
 		<PackageReference Include="Akavache.SystemTextJson" Version="13.0.0" />
 		<PackageReference Include="LogicBuilder.App.Bsl.Business" Version="1.0.3" />
-		<PackageReference Include="LogicBuilder.App.Maui" Version="1.0.1" />
+		<PackageReference Include="LogicBuilder.App.Maui" Version="1.0.2" />
 		<PackageReference Include="LogicBuilder.App.Maui.Forms.Configuration" Version="1.1.0" />
 		<PackageReference Include="LogicBuilder.EntityFrameworkCore" Version="8.0.3" />
 		<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="10.0.14" />

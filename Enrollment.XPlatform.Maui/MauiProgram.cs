@@ -3,6 +3,7 @@ using Akavache.Sqlite3;
 using Akavache.SystemTextJson;
 using Enrollment.XPlatform.Constants;
 using LogicBuilder.App.Maui.Constants;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Maui.Controls.Hosting;
 using Microsoft.Maui.Devices;
@@ -41,6 +42,14 @@ namespace Enrollment.XPlatform
                     fonts.AddFont("OpenSans_Semibold.ttf", "OpenSansSemibold");
                 });
 
+            using var stream = typeof(MauiProgram).Assembly.GetManifestResourceStream("Enrollment.XPlatform.appsettings.json");
+
+            var configBuilder = new ConfigurationBuilder();
+            if (stream != null)
+                configBuilder.AddJsonStream(stream);
+            configuration = configBuilder.Build();
+            builder.Configuration.AddConfiguration(configuration);
+
             AppBuilder.CreateSplatBuilder()
                 .WithAkavacheCacheDatabase<SystemJsonSerializer>
                 (
@@ -51,6 +60,8 @@ namespace Enrollment.XPlatform
 
             return builder.Build();
         }
+
+        static IConfiguration? configuration;
 
         public static void Init(Action<IServiceCollection> platformConfigurationServices)
         {
@@ -64,13 +75,15 @@ namespace Enrollment.XPlatform
 
         private static void ConfigureServices(ServiceCollection services)
         {
+            if (configuration is not null)
+                services.AddSingleton(configuration);
             services
                 .AddLogicBuilderMauiServices()
                 .AddFlowServices()
                 /*To use the extended splash (useful for low powered devices)
                  * 1) Comment out .AddRulesCache()
-                 * 2) In App.CreateWindow(), replace return new Microsoft.Maui.Controls.Window(ServiceProvider.GetRequiredService<MainPageView>()); 
-                 *          with return new Microsoft.Maui.Controls.Window(App.ServiceProvider.GetRequiredService<ExtendedSplashView>());
+                 * 2) In App.CreateWindow(), replace return new Microsoft.Maui.Controls.Window(ServiceProvider.GetRequiredService<MainPageView>()) 
+                 *          with return new Microsoft.Maui.Controls.Window(App.ServiceProvider.GetRequiredService<ExtendedSplashView>())
                  */
                 .AddRulesCache()
                 .AddViewModels()

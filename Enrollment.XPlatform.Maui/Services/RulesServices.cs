@@ -12,7 +12,7 @@ namespace Microsoft.Extensions.DependencyInjection
             (
                 new RulesLoaderRequest
                 (
-                    "Contoso.XPlatform.Flow.Rulesets",
+                    "Enrollment.XPlatform.Flow.Rulesets",
                     typeof(FlowActivity),
                     [
                         typeof(LogicBuilder.App.Utils.Interfaces.ITypeHelper).Assembly,
